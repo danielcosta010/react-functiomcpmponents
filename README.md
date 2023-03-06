@@ -9,7 +9,7 @@
 - Fazer validação de dados em formulários
 - Conceitos de formulários controlados e não controlados
 
-<a href='https://react-functioncomponents.vercel.app/' target='_blank'><img src='https://github.com/danielcosta010/react-functiomcpmponents/blob/main/public/capa_do_projeto.png' alt='foto da capa do projeto' width='70%'></a>
+<a href='https://react-functioncomponents.vercel.app/' target='_blank'><img src='https://github.com/danielcosta010/react-functiomcpmponents/blob/main/public/capa_do_projeto.png#vitrinedev' alt='foto da capa do projeto' width='70%'></a>
 
 Este projeto foi inicializado com [Create React App](https://github.com/facebook/create-react-app).
 
