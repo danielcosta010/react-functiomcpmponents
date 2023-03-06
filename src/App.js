@@ -1,7 +1,8 @@
+import '@fontsource/roboto/400.css';
+
 import { Container, Typography } from '@mui/material';
 import FormularioCadastro from './componentes/FormularioCadastro/FormularioCadastro';
 
-import '@fontsource/roboto/400.css';
 
 function aoEnviarForm(dados) {
   console.log(dados);
@@ -9,7 +10,7 @@ function aoEnviarForm(dados) {
 
 function validaCPF(cpf) {
   if (cpf.length !== 11) {
-    return {valido: false, texto: 'Cpf deve ter 11 dígitos'};
+    return {valido: false, texto: 'Cpf deve ter 11 números, sem pontos ou traços'};
   } else {
     return {valido: true, texto: ''};
   }

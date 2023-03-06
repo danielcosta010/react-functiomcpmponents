@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button, FormControlLabel, Switch, TextField } from '@mui/material';
 
 
+
 function FormularioCadastro({ aoEnviar, validaCPF }) {
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
@@ -11,6 +12,7 @@ function FormularioCadastro({ aoEnviar, validaCPF }) {
   const [novidades, setNovidades] = useState(true);
   const [erros, setErros] = useState({ cpf: { valido: true, texto: '' }})
   const [botaoHabilitado, setBotaoHabilitado] = useState(false);
+  const [cadastro, setCadastro] = useState(null);
 
   function handleChange(event) {
     setCpf(event.target.value);
@@ -21,11 +23,20 @@ function FormularioCadastro({ aoEnviar, validaCPF }) {
     }
   }
 
+  function handleCadastro(cadastro) {
+    setCadastro(cadastro);
+  }
+
+  
   return (
+    <>
+    
     <form onSubmit={
       event => {
         event.preventDefault();
+        handleCadastro({ nome, sobrenome, cpf, promocoes, novidades });
         aoEnviar({ nome, sobrenome, cpf, promocoes, novidades })
+        cpf.replace(/[^\d]/g, '')
       }
     }>
 
@@ -65,7 +76,7 @@ function FormularioCadastro({ aoEnviar, validaCPF }) {
         id="cpf"
         label="CPF"
         variant="outlined"
-        type='number'
+        type='text'
         margin='normal'
         fullWidth
         required
@@ -97,7 +108,20 @@ function FormularioCadastro({ aoEnviar, validaCPF }) {
       >
         Cadastrar
       </Button>
+
+      
     </form>
+
+    {cadastro && (
+      <div>
+        <p>Nome: {cadastro.nome}</p>
+        <p>Sobrenome: {cadastro.sobrenome}</p>
+        <p>CPF: {cadastro.cpf}</p>
+        <p>Promoções: {cadastro.promocoes ? 'Sim' : 'Não'}</p>
+        <p>Novidades: {cadastro.novidades ? 'Sim' : 'Não'}</p>
+      </div>
+    )}
+    </>
   );
 }
 
