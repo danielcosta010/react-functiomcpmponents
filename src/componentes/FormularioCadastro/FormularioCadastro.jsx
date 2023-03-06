@@ -1,49 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Button, FormControlLabel, Switch, TextField } from '@mui/material';
 
+
 function FormularioCadastro() {
-  let nome = '';
+  const [nome, setNome] = useState('')
+  
+
+  function guardaNome(event) {
+    let nomeTemp = event.target.value
+    if(nomeTemp.length >= 3)
+    nomeTemp = nomeTemp.substr(0, 3)
+    
+    setNome(nomeTemp) 
+  }
+
+  
   return (
-    <form>
+    <form onSubmit={
+      event => {
+        event.preventDefault();
+        console.log(nome)
+      }
+    }>
 
-      <TextField 
-      onChange={event => {console.log(event.target.value);}}
-        id="nome" 
-        label="Nome" 
-        variant="outlined" 
-        margin='normal' 
-        fullWidth 
+      <TextField
+        value={nome}
+        onChange={guardaNome}
+        id="nome"
+        label="Nome"
+        variant="outlined"
+        margin='normal'
+        fullWidth
       />
 
-      <TextField 
-        id="sobrenome" 
-        label="Sobrenome" 
-        variant="outlined" 
-        margin='normal' 
-        fullWidth 
+      <TextField
+        id="sobrenome"
+        label="Sobrenome"
+        variant="outlined"
+        margin='normal'
+        fullWidth
       />
 
-      <TextField 
-        id="cpf" 
-        label="CPF" 
-        variant="outlined" 
+      <TextField
+        id="cpf"
+        label="CPF"
+        variant="outlined"
         type='number'
-        margin='normal' 
-        fullWidth 
+        margin='normal'
+        fullWidth
       />
 
-      
-      <FormControlLabel 
-        control={<Switch defaultChecked size='small' />} 
-        label="Promoções" 
+
+      <FormControlLabel
+        control={<Switch defaultChecked size='small' />}
+        label="Promoções"
       />
 
-      <FormControlLabel 
-        control={<Switch defaultChecked size='small' />} 
-        label="Novidades" 
+      <FormControlLabel
+        control={<Switch defaultChecked size='small' />}
+        label="Novidades"
       />
-     
+
       <Button variant="contained" type='submit'>
         Cadastrar
       </Button>
